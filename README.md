@@ -72,3 +72,14 @@ FROM OPENROWSET( <br>
 <p>FIEDTERMINATOR - Delimitador </p>
 <p>ROWTERMINATOR - Ultimo caractere de considera um linha</p>
 
+<strong>Atribuindo nome e tipo as colunas </strong>
+<p>Exemplo 1 - Atribuindo nome a coluna e tipo</p>
+
+![image](https://github.com/user-attachments/assets/96ef6259-ae76-4b75-9a91-f655766e3432)
+
+<p>Exemplo 2 - Atribuindo nome e tipagem por posição</p>
+
+![image](https://github.com/user-attachments/assets/4f723bc9-210d-4e05-bc63-8a0b1b367df7)
+
+
+
