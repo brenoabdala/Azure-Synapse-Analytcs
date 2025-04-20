@@ -82,5 +82,12 @@ FROM OPENROWSET( <br>
 
 ![image](https://github.com/user-attachments/assets/4f723bc9-210d-4e05-bc63-8a0b1b367df7)
 
+<STRONG>Criando um Schema com base externa</strong>
+
+> CREATE EXTERNAL DATA SOURCE nome_schema <br>
+  WITH(<br>
+      LOCATION = 'abfss://#'
+  )
+
 
 
