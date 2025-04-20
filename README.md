@@ -47,23 +47,25 @@ Especificação da Fonte de Dados: Você pode especificar explicitamente a local
 <p>-Uso na Cláusula FROM: A função OPENROWSET é usada na cláusula FROM de uma instrução SELECT como se fosse o nome de uma tabela. </p>
 
 <p>Sintaxe</p>
-> OPENROWSET(
-    BULK 'caminho/para/o/arquivo(s)',
-    FORMAT = 'formato_do_arquivo'
-    [, DATA_SOURCE = 'nome_da_fonte_de_dados']
-    [, PARSER_VERSION = 'versao_do_parser']
-    [, <opções_específicas_do_formato>]
+
+> OPENROWSET( <br>
+    BULK 'caminho/para/o/arquivo(s)', <br>
+    FORMAT = 'formato_do_arquivo' <br>
+    [, DATA_SOURCE = 'nome_da_fonte_de_dados'] <br>
+    [, PARSER_VERSION = 'versao_do_parser'] <br>
+    [, <opções_específicas_do_formato>] <br>
 ) [AS] nome_da_tabela_virtual (coluna1 tipo1, coluna2 tipo2, ...)
 
  <p>CSV-Exemplo prático</p>
- >SELECT TOP 10 *
-FROM OPENROWSET(
-    BULK 'https://<sua_conta>.blob.core.windows.net/<seu_container>/dados.csv',
-    FORMAT = 'CSV',
-    --FIRSTROW = 2, -- Ignorar a primeira linha (cabeçalho)
-    FIELDTERMINATOR = ',',
-    HEADER_ROW = TRUE,
-    ROWTERMINATOR ='\n'
+ 
+ >SELECT TOP 10 * <br>
+FROM OPENROWSET( <br>
+    BULK 'https://<sua_conta>.blob.core.windows.net/<seu_container>/dados.csv', <br>
+    FORMAT = 'CSV', <br>
+    --FIRSTROW = 2, -- Ignorar a primeira linha (cabeçalho) <br>
+    FIELDTERMINATOR = ',', <br>
+    HEADER_ROW = TRUE, <br>
+    ROWTERMINATOR ='\n' <br>
 ) AS dados;
 
 <p>HEAD_ROW=TRUE - Possui cabeçalho</p>
