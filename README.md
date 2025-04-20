@@ -76,6 +76,7 @@ FROM OPENROWSET( <br>
 <p>Exemplo 1 - Atribuindo nome a coluna e tipo</p>
 
 ![image](https://github.com/user-attachments/assets/96ef6259-ae76-4b75-9a91-f655766e3432)
+<p>Collate, utiliza-se para converter o tipo do dado por região.</p>
 
 <p>Exemplo 2 - Atribuindo nome e tipagem por posição</p>
 
