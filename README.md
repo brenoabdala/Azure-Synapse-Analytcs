@@ -129,3 +129,6 @@ FROM OPENROWSET( <br>
 
 > CROSSAPPLY OPENJSON(jsonDoc)
 
+<p>Exemplo 4 - JSON ARRAY</p>
+
+EM Construção ...
