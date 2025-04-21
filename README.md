@@ -17,7 +17,7 @@ Em resumo, a arquitetura do Azure Synapse Analytics é projetada para processame
 
 ![image](https://github.com/user-attachments/assets/ecfc4f6c-d808-40a7-b53f-0f243a66ea6a)
 
-<h3>Pontos</h3>
+<strong>Pontos</strong>
 - Serveless e Servidor <br>
 - Mecanismo de consulta distribuída <br>
 - Robusto <br>
@@ -26,7 +26,7 @@ Em resumo, a arquitetura do Azure Synapse Analytics é projetada para processame
 - Não armazena dados, os consome <br>
 - Synapse Link <br>
 
-
+<hr>
 <h3>OPENROWSET Function Overview</h3>
 
 <p>O comando OPENROWSET no Azure Synapse Analytics (especificamente no pool de SQL sem servidor) é uma função Transact-SQL (T-SQL) que permite ler o conteúdo de arquivos diretamente de uma fonte de dados externa e retornar esses dados como um conjunto de linhas (rowset), como se fosse uma tabela.</p>
@@ -46,7 +46,7 @@ Especificação da Fonte de Dados: Você pode especificar explicitamente a local
 
 <p>-Uso na Cláusula FROM: A função OPENROWSET é usada na cláusula FROM de uma instrução SELECT como se fosse o nome de uma tabela. </p>
 
-<p>Sintaxe</p>
+<strong>Sintaxe</strong>
 
 > OPENROWSET( <br>
     BULK 'caminho/para/o/arquivo(s)', <br>
@@ -72,7 +72,7 @@ FROM OPENROWSET( <br>
 <p>FIEDTERMINATOR - Delimitador </p>
 <p>ROWTERMINATOR - Ultimo caractere de considera um linha</p>
 
-<strong>Atribuindo nome e tipo as colunas </strong>
+<strong>Atribuindo nome e tipo as colunas</strong>
 <p>Exemplo 1 - Atribuindo nome a coluna e tipo</p>
 
 ![image](https://github.com/user-attachments/assets/96ef6259-ae76-4b75-9a91-f655766e3432)
@@ -89,5 +89,43 @@ FROM OPENROWSET( <br>
       LOCATION = 'abfss://#'
   )
 
+<Strong>Cenários em que temos virgulas como separador e no conteúdo da colunas</strong>
 
+<p>Existem duas formas de trabalhar com o cenário em que existem virgulas, no conteúdo da coluna.</p>
+<p>Exemplo 1 - ESCAPECHAR </p>
+
+![image](https://github.com/user-attachments/assets/a48a4e6f-4fb0-4c8f-87f2-746da4d378de)
+
+
+<p>Exemplo 2 - FIELDQUOTE</p> 
+
+![image](https://github.com/user-attachments/assets/fd59d922-994e-4245-9399-3ab898e7b5be)
+
+<strong>Cenário que o espaçamento como delimitador</strong>
+<p>No exemplo a seguir, basta adicionar FIELDTERMINATOR '\t', conforme a imagem a seguir:</p>
+
+![image](https://github.com/user-attachments/assets/b3ae457a-01cb-458a-b826-ef0f0ee812ae)
+
+<hr>
+
+<h3>Trabalhando com o Formato JSON - Serveless SQL POOL</h3>
+<Strong>JSON In-line</Strong>
+<p>Sintaxe</p>
+
+> {"name":"Nome1","Idade":"14"}
+<p> Exemplo 1 </p>
+<p>Nota: Alterar o tipo FIELDTERMINATOR = '0x0b' | FIELDQUOTE = '0x0b' | ROWTERMINATOR = '0x0a' | PARSE_VERSION='1.0' e adicionar no WTIH jsonDoc nvarchar(max) </p>
+<p>Resultado</p>
+
+> {"name":"Nome1","Idade":"14"}
+<p>Exemplo 2</p>
+<Strong>Separando as colunas</Strong>
+<p>Adiciona o JSON_VALUE e adiciona os campos individualmente por coluna.</p>
+
+![image](https://github.com/user-attachments/assets/1457d84e-90e0-4ad6-872c-b8df0c8460c8)
+
+<p>Exemplo 3 - OPENJSON </p>
+<p> Abrindo arquivo direto com o comando openjson, seguindo o mesmo exemplo anterior adiciona no final após o WITH.</p>
+
+> CROSSAPPLY OPENJSON(jsonDoc)
 
